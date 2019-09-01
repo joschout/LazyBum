@@ -1,0 +1,2 @@
+nbOfFolds:10
+foldSize:3

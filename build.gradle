@@ -1,0 +1,57 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'idea'
+}
+
+version '1.0-SNAPSHOT'
+
+// Defines which language version of Java your source files should be treated as.
+sourceCompatibility = 1.11
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    implementation group: 'mysql', name: 'mysql-connector-java', version: '6.0.2'
+    implementation group: 'org.postgresql', name: 'postgresql', version: '42.2.1'
+
+    // used to be version 3.11.5
+    implementation group: 'org.jooq', name: 'jooq', version: '3.11.11'
+    implementation group: 'org.jooq', name: 'jooq-meta', version: '3.11.11'
+    implementation group: 'org.jooq', name: 'jooq-codegen', version: '3.11.11'
+
+    implementation group: 'org.jgrapht', name: 'jgrapht-core', version: '1.2.0'
+    implementation group: 'org.jgrapht', name: 'jgrapht-io', version: '1.2.0'
+
+    implementation group: 'com.google.guava', name: 'guava', version: '27.0-jre'
+    implementation group: 'org.apache.commons', name: 'commons-math3', version: '3.6.1'
+    implementation group: 'org.apache.commons', name: 'commons-csv', version: '1.6'
+
+    implementation 'com.google.code.gson:gson:2.8.5'
+    
+    compile group: 'nz.ac.waikato.cms.weka', name: 'weka-stable', version: '3.8.3'
+
+    testImplementation group: 'junit', name: 'junit', version: '4.12'
+}
+
+idea{
+    project {
+        languageLevel = '1.11'
+    }
+    module {
+        downloadJavadoc = true // defaults to false
+        downloadSources = true
+    }
+}
+
+run {
+    args = [ 'data/uw_cse/config.properties']
+}
+
+//mainClassName = 'onebm.OneBMMain'
+mainClassName = 'lazybum.main.LazyBumLearnSingleDecisionTreeMain'
+// mainClassName = 'lazybum.main.LazyBumTenFoldCVDecisionTreePredictionMain'
+// mainClassName = 'utils.CleanUp'
